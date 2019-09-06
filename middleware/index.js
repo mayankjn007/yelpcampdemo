@@ -1,11 +1,11 @@
 
-var Campground = require("../models/campground");
-var Comment = require("../models/comment");
-var middlewareObj={};
+const Campground = require("../models/campground");
+const Comment = require("../models/comment");
+const middlewareObj={};
 
-middlewareObj.isLoggedIn=function(req,res,next){
+middlewareObj.isLoggedIn=(req,res,next)=>{
     if(req.isAuthenticated()){
-        return next();
+        return next();  
     }
     else{
         req.flash("error","You have to LogIn First..!!");
@@ -14,7 +14,7 @@ middlewareObj.isLoggedIn=function(req,res,next){
         
 };
 
-middlewareObj.checkCampgroundOwnership=function(req,res,next) {
+middlewareObj.checkCampgroundOwnership = (req,res,next) => {
     if(req.isAuthenticated()){
       Campground.findById(req.params.id,function(err,foundCampground){
         if(err || !foundCampground){

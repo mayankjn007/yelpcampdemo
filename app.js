@@ -1,21 +1,21 @@
 //SETUP
-var express = require("express");
-var app = express();
-var bodyParser= require("body-parser");
-var mongoose = require("mongoose");
-var passport = require("passport");
-var localStratergy = require("passport-local");
-var Campground = require("./models/campground");        
-var Comment = require("./models/comment");
-var User = require("./models/user");
-var seedDB = require("./seeds.js");
-var methodOverride = require("method-override");
-var flash = require("connect-flash");
+const express = require("express");
+const app = express();
+const bodyParser= require("body-parser");
+const mongoose = require("mongoose");
+const passport = require("passport");
+const localStratergy = require("passport-local");
+const Campground = require("./models/campground");        
+const Comment = require("./models/comment");
+const User = require("./models/user");
+const seedDB = require("./seeds.js");
+const methodOverride = require("method-override");
+const flash = require("connect-flash");
 
 //===================REQUIRE ROUTES FILE========================
-var campgroundRoutes = require("./routes/campgrounds");
-var commentRoutes = require("./routes/comments");
-var indexRoutes = require("./routes/index");
+const campgroundRoutes = require("./routes/campgrounds");
+const commentRoutes = require("./routes/comments");
+const indexRoutes = require("./routes/index");
 //==============================================================
 
 app.set("view engine","ejs");
@@ -39,7 +39,7 @@ passport.use(new localStratergy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 //=============================================================
-app.use(function(req,res,next){
+app.use((req,res,next) => {
    res.locals.currentUser = req.user;
    res.locals.error = req.flash("error");
    res.locals.success = req.flash("success");
@@ -48,8 +48,8 @@ app.use(function(req,res,next){
 app.use(indexRoutes);
 app.use(campgroundRoutes);
 app.use(commentRoutes);
-
-app.listen(process.env.PORT,process.env.IP,function(){
+const PORT = process.env.PORT || 8000;
+app.listen(PORT,() => {
    console.log("Server Started"); 
 });
 
