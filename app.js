@@ -8,7 +8,7 @@ const localStratergy = require("passport-local");
 const Campground = require("./models/campground");        
 const Comment = require("./models/comment");
 const User = require("./models/user");
-const seedDB = require("./seeds.js");
+// const seedDB = require("./seeds.js");
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
 
@@ -26,7 +26,6 @@ mongoose.connect("mongodb://localhost/yelp_camp",{ useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 app.use(flash());
 // seedDB();
-
 //======PASSPORT CONFIG========================================
 app.use(require("express-session")({
     secret: "Thoda sa samjhmein aana lga hai",

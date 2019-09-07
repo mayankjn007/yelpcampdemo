@@ -6,7 +6,7 @@ const data = [
     {   author: "Mayank",
         name : "Rishikesh",
         image : "https://ihplb.b-cdn.net/wp-content/uploads/2014/06/Camping-in-Rishikesh.jpg",
-        description: "Situated in the lap of the Great Himalayas, Rishikesh is a major pilgrim destination for Hindus. It is one of the most sought after camping destinations in India and a popular Indian pilgrimage destination. One can go for rafting and can try hands at other adventure sports. It too attracts people from all over the world."
+        description: "   "
     },
     {   author: "Mayank",
         name : "Jaisalmer",
@@ -20,6 +20,17 @@ const data = [
         description: "Situated in the lap of the Great Himalayas, Rishikesh is a major pilgrim destination for Hindus. It is one of the most sought after camping destinations in India and a popular Indian pilgrimage destination. One can go for rafting and can try hands at other adventure sports. It too attracts people from all over the world."
     }
     ];
+
+    function seedDB()
+    {
+        Campground.deleteMany({},(err) => {
+        if(err)
+            console.log(err);
+        }
+    }
+}
+            
+
 
 function seedDB()
 {
